@@ -1,0 +1,52 @@
+<!-- Menu Button -->
+<button class="btn btn-primary m-2"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#menuCanvas">
+  ☰ Menu
+</button>
+
+<!-- Offcanvas Sidebar -->
+<div class="offcanvas offcanvas-start"
+     tabindex="-1"
+     id="menuCanvas">
+
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title">Menu</h5>
+    <button type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas">
+    </button>
+  </div>
+
+  <div class="offcanvas-body">
+
+    <ul class="list-group">
+
+      <li class="list-group-item"
+          routerLink="home"
+          data-bs-dismiss="offcanvas">
+        Home
+      </li>
+
+      <li class="list-group-item"
+          routerLink="allemployes"
+          data-bs-dismiss="offcanvas">
+        All Employees
+      </li>
+
+      <li class="list-group-item"
+          routerLink="createemploy"
+          data-bs-dismiss="offcanvas">
+        Create Employee
+      </li>
+
+    </ul>
+
+  </div>
+</div>
+
+<!-- Main Content -->
+<div class="container mt-3">
+  <router-outlet></router-outlet>
+</div>
