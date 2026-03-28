@@ -1,67 +1,82 @@
 <div class="container mt-4">
+<label for="employeeSearch">Search Employees:</label>
+  <input type="text" class="form-control mb-3" id="employeeSearch" placeholder="Enter employee name..." (keyup)="search()" [(ngModel)]="searchemp">
+  <!-- Title -->
+   
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4 class="fw-bold">Employee Management</h4>
+    <span class="badge bg-secondary">Total: {{ totleemployes.length }}</span>
+  </div>
 
-  <h2 class="text-center mb-4">Employee Management</h2>
+  <!-- Table -->
+  <div class="table-responsive shadow-sm rounded">
 
-  <div class="table-responsive shadow rounded">
-    <table class="table table-striped table-hover align-middle">
+    <table class="table table-hover align-middle mb-0">
 
-      <!-- Table Header -->
-      <thead class="table-dark text-center">
+      <!-- Header -->
+      <thead class="header-style">
         <tr>
           <th>ID</th>
-          <th>Name</th>
-          <th>Company</th>
-          <th>Role</th>
-          <th>Package</th>
-          <th>Email</th>
+          <th (click)="sortname('name')">Name</th>
+          <th (click)="sortname('company')">Company</th>
+          <th (click)="sortname('role')">Role</th>
+          <th (click)="sortname('package')">Package</th>
+          <th (click)="sortname('email')">Email</th>
           <th>Gender</th>
-          <th>City</th>
+          <th (click)="sortname('city')">City</th>
           <th>Work Mode</th>
+          <th class="text-center">Actions</th>
         </tr>
       </thead>
 
-      <!-- Table Body -->
+      <!-- Body -->
       <tbody>
 
-        <tr *ngFor="let emp of totleemployes" class="text-center">
+        <tr *ngFor="let emp of totleemployes">
 
           <td>{{ emp.id }}</td>
 
+          <td class="fw-semibold">
+            {{ emp.name || '-' }}
+          </td>
+
+          <td>{{ emp.company || '-' }}</td>
+
+          <td>{{ emp.role || '-' }}</td>
+
+          <td class="text-success fw-semibold" [ngStyle]="{'color':emp.package > 100000  ? 'red':'green'}">
+            ₹ {{ emp.package}}
+          </td>
+
+          <td class="text-muted">
+            {{ emp.email || '-' }}
+          </td>
+
+          <td>{{ emp.gender || '-' }}</td>
+
+          <td>{{ emp.address?.city || '-' }}</td>
+
           <td>
-            <span class="fw-bold text-primary">
-              {{ emp.name || 'N/A' }}
+            <span class="badge bg-light text-dark border">
+              {{ emp.workMode || '-' }}
             </span>
           </td>
 
-          <td>{{ emp.company || 'N/A' }}</td>
+          <!-- Actions -->
+          <td class="text-center">
 
-          <td>
-            <span class="badge bg-info text-dark">
-              {{ emp.role || 'N/A' }}
-            </span>
-          </td>
+            <button class="btn btn-sm btn-primary me-1" routerLink="/dashbord/editeemploye/{{emp.id}}">
+              Edit
+            </button>
 
-          <td>
-            <span class="text-success fw-semibold">
-              ₹ {{ emp.package || 0 }}
-            </span>
-          </td>
+            <button class="btn btn-sm btn-danger me-1" (click)="deleteemp(emp.id)">
+              Delete
+            </button>
 
-          <td>{{ emp.email || 'N/A' }}</td>
+            <button class="btn btn-sm btn-outline-dark">
+              View
+            </button>
 
-          <td>
-            <span class="badge"
-                  [ngClass]="emp.gender === 'male' ? 'bg-primary' : 'bg-danger'">
-              {{ emp.gender || 'N/A' }}
-            </span>
-          </td>
-
-          <td>{{ emp.address?.city || 'N/A' }}</td>
-
-          <td>
-            <span class="badge bg-warning text-dark">
-              {{ emp.workMode || 'N/A' }}
-            </span>
           </td>
 
         </tr>
@@ -69,6 +84,12 @@
       </tbody>
 
     </table>
+
   </div>
 
+  <button (click)="pageprev()">Prev</button>
+  <button *ngFor="let emp of[].constructor(10); let i=index "
+   (click)="pageemp(i + 1)">{{i + 1}}</button>
+
+   <button (click)="nextemp()">Next</button>
 </div>

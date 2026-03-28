@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { createComponent, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashbordComponent } from './components/dashbord/dashbord.component';
 import { HomeComponent } from './components/home/home.component';
@@ -10,7 +10,8 @@ const routes: Routes = [
   {path:'dashbord',component:DashbordComponent, children:[
     {path:'home',component:HomeComponent},
     {path:'allemployes',component:AllEmployesComponent},
-    {path:'createemploy',component:CreateEmployComponent}
+    {path:'createemploy',component:CreateEmployComponent},
+    {path:'editeemploye/:id',component:CreateEmployComponent}
   ]},
   {path:'login',component:LoginComponent},
   {path:'',component:LoginComponent},

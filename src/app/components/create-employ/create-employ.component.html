@@ -1,1 +1,85 @@
-<p>create-employ works!</p>
+<div>
+    <form action="" [formGroup]="empform">
+        <label for="">Name</label>
+        <input type="text" id="name" name="name" formControlName="name"><br>
+        <label for="city">City</label>
+        <input type="text" id="city" name="city" formControlName="city"><br>
+        <label for="company">Company</label>
+        <input type="text" id="company" name="company" formControlName="company"><br>
+        <label for="">DOB</label>
+        <input type="date" id="dob" name="dob" formControlName="dob"><br>
+        <label for="">Email</label>
+        <input type="email" id="email" name="email" formControlName="email"><br>
+        <label for="">Gender</label>
+        <input type="radio" id="male" name="gender" value="male" formControlName="gender">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female" formControlName="gender">
+        <label for="female">Female</label><br>
+        <label for="">Package</label>
+        <input type="number" id="package" name="package" formControlName="package"><br>
+        <label for="">Role</label>
+        <input type="text" id="role" name="role" formControlName="role">
+
+        <div formGroupName="address">
+            <label for="addressLine">Address Line</label>
+            <input type="text" id="addressLine" name="addressLine" formControlName="addressLine">
+            <label for="state">State</label>
+            <input type="text" id="state" name="state" formControlName="state">
+            <label for="pincode">Pincode</label>
+            <input type="text" id="pincode" name="pincode" formControlName="pincode">
+            <label for="city">City</label>
+            <input type="text" id="city" name="city" formControlName="city">
+
+        </div>
+
+        <div>
+            <label for="workMode">Work Mode</label>
+            <input type="radio" id="workMode" name="workMode" formControlName="workMode" value="workFromOffice">
+            <label for="remote">Remote</label>
+            <input type="radio" id="workMode" name="workMode" formControlName="workMode" value="remote">
+            <label for="office">Office</label>
+
+            <div *ngIf="empform.get('workMode')?.value == 'workFromOffice'">
+                <label for="">travel fee</label>
+                <input type="number" id="travelFee" name="travelFee" formControlName="travelFee">
+
+            </div>
+
+            <div *ngIf="empform.get('workMode')?.value == 'remote'">
+                <label for="">WifiBill</label>
+                <input type="number" id="wifiBill" name="wifiBill" formControlName="wifiBill">
+
+            </div>
+        </div>
+
+        <div>
+            <label for="">Hikes add</label>
+            <button (click)="addHike()">Add Hike</button>
+            <div formArrayName="hikes">
+                <div *ngFor="let hike of hikesarry.controls; let i = index">
+                    <div formGroupName="{{i}}">
+                        <h1>{{i+1}}</h1>
+
+                        <label for="year">Year</label>
+                        <input type="text" formControlName="year">
+                        <label for="hikePercentage">Hike Percentage</label>
+                        <input type="number" formControlName="hikepercentage">
+                       <button (click)="removeHike(i)">Remove</button>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+
+
+
+        <button (click)="submit()">Submit</button>
+    </form>
+
+
+
+</div>

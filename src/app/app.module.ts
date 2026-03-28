@@ -13,6 +13,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { AllEmployesComponent } from './components/all-employes/all-employes.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ViewEmpployesComponent } from './components/view-empployes/view-empployes.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     CreateEmployComponent,
     HomeComponent,
     LoginComponent,
-    AllEmployesComponent
+    AllEmployesComponent,
+    ViewEmpployesComponent
   ],
   imports: [
     BrowserModule,
