@@ -1,0 +1,36 @@
+.card {
+  border-radius: 12px;
+}
+
+.card-header {
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.section-title {
+  border-left: 4px solid #198754;
+  padding-left: 10px;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-label {
+  font-weight: 500;
+}
+
+input.form-control {
+  border-radius: 8px;
+}
+
+button {
+  border-radius: 8px;
+}
+
+.card p {
+  margin-bottom: 8px;
+}
+
+.card .btn-danger {
+  width: 100px;
+}

@@ -1,33 +1,93 @@
-/* Professional header gradient */
-.header-style {
-  background: linear-gradient(to right, #4e73df, #6c757d);
-  color: #fff;
+/* BACKGROUND */
+.main-bg {
+  background: linear-gradient(135deg, #020617, #0f172a);
+  min-height: 100vh;
+  color: white;
 }
 
-.header-style th {
-  font-weight: 600;
-  text-align: center;
-  padding: 12px;
+/* TITLE */
+.title {
+  font-weight: bold;
+  background: linear-gradient(45deg, #6366f1, #22c55e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* Table */
-.table {
-  font-size: 14px;
+/* SEARCH */
+.search-box {
+  background: #1e293b;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  padding: 6px 10px;
 }
 
-/* Row hover */
-.table-hover tbody tr:hover {
-  background-color: #f1f3f5;
+/* BADGE */
+.total-badge {
+  padding: 8px 12px;
+  border-radius: 8px;
 }
 
-/* Buttons */
-.btn-sm {
-  padding: 4px 10px;
-  font-size: 12px;
+/* TABLE CARD */
+.table-card {
+  background: #020617;
+  padding: 15px;
+  border-radius: 12px;
+  overflow-x: auto;
 }
 
-/* Badge */
-.badge {
-  font-size: 12px;
-  padding: 5px 8px;
+/* TABLE */
+table {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* HEADER */
+thead {
+  background: #1e293b;
+}
+
+/* SORTABLE */
+.sortable {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.sortable:hover {
+  color: #22c55e;
+}
+
+/* SALARY COLORS */
+.high-salary {
+  color: #ef4444;
+  font-weight: bold;
+}
+
+.low-salary {
+  color: #22c55e;
+  font-weight: bold;
+}
+
+/* MODE BADGE */
+.mode-badge {
+  background: #1e293b;
+  color: #cbd5f5;
+}
+
+/* PAGINATION */
+.btn-page {
+  background: #1e293b;
+  color: white;
+  border: none;
+  border-radius: 6px;
+}
+
+.btn-page:hover {
+  background: #22c55e;
+  color: black;
+}
+
+/* BUTTONS */
+button {
+  border-radius: 6px;
 }

@@ -1,0 +1,67 @@
+/* BACKGROUND */
+.main-bg {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #020617, #0f172a);
+  color: white;
+}
+
+/* TOPBAR */
+.topbar {
+  height: 60px;
+  background: #020617;
+  border-bottom: 1px solid #1e293b;
+}
+
+/* BUTTON */
+.btn-gradient {
+  background: linear-gradient(45deg, #6366f1, #22c55e);
+  border: none;
+  color: white;
+  border-radius: 8px;
+}
+
+/* SIDEBAR */
+.custom-sidebar {
+  background: #020617;
+  color: white;
+  width: 260px;
+}
+
+/* TITLE */
+.text-gradient {
+  background: linear-gradient(45deg, #6366f1, #22c55e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* MENU */
+.custom-menu .list-group-item {
+  background: transparent;
+  color: #cbd5f5;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+/* HOVER */
+.custom-menu .list-group-item:hover {
+  background: #1e293b;
+  color: white;
+}
+
+/* ACTIVE LINK */
+.active-link {
+  background: #22c55e !important;
+  color: black !important;
+}
+
+/* HERO */
+.hero-box {
+  background: rgba(30, 41, 59, 0.6);
+  padding: 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}

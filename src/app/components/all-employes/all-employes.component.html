@@ -1,80 +1,90 @@
-<div class="container mt-4">
-<label for="employeeSearch">Search Employees:</label>
-  <input type="text" class="form-control mb-3" id="employeeSearch" placeholder="Enter employee name..." (keyup)="search()" [(ngModel)]="searchemp">
-  <!-- Title -->
-   
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <h4 class="fw-bold">Employee Management</h4>
-    <span class="badge bg-secondary">Total: {{ totleemployes.length }}</span>
+<div class="container-fluid mt-4 main-bg p-4">
+
+  <!-- TOP BAR -->
+  <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+    
+    <h4 class="title">Employee Dashboard</h4>
+
+    <div class="d-flex gap-2">
+      <input type="text"
+             class="form-control search-box"
+             placeholder="🔍 Search employee..."
+             (keyup)="search()"
+             [(ngModel)]="searchemp">
+
+      <span class="badge bg-dark total-badge">
+        Total: {{ totleemployes.length }}
+      </span>
+    </div>
+
   </div>
 
-  <!-- Table -->
-  <div class="table-responsive shadow-sm rounded">
+  <!-- TABLE -->
+  <div class="table-card">
 
-    <table class="table table-hover align-middle mb-0">
+    <table class="table table-dark table-hover align-middle">
 
-      <!-- Header -->
-      <thead class="header-style">
+      <thead>
         <tr>
           <th>ID</th>
-          <th (click)="sortname('name')">Name</th>
-          <th (click)="sortname('company')">Company</th>
-          <th (click)="sortname('role')">Role</th>
-          <th (click)="sortname('package')">Package</th>
-          <th (click)="sortname('email')">Email</th>
+          <th (click)="sortname('name')" class="sortable">Name</th>
+          <th (click)="sortname('company')" class="sortable">Company</th>
+          <th (click)="sortname('role')" class="sortable">Role</th>
+          <th (click)="sortname('package')" class="sortable">Package</th>
+          <th>Email</th>
           <th>Gender</th>
-          <th (click)="sortname('city')">City</th>
-          <th>Work Mode</th>
+          <th (click)="sortname('city')" class="sortable">City</th>
+          <th>Mode</th>
           <th class="text-center">Actions</th>
         </tr>
       </thead>
 
-      <!-- Body -->
       <tbody>
 
         <tr *ngFor="let emp of totleemployes">
 
           <td>{{ emp.id }}</td>
 
-          <td class="fw-semibold">
-            {{ emp.name || '-' }}
-          </td>
+          <td class="fw-bold">{{ emp.name || '-' }}</td>
 
           <td>{{ emp.company || '-' }}</td>
 
           <td>{{ emp.role || '-' }}</td>
 
-          <td class="text-success fw-semibold" [ngStyle]="{'color':emp.package > 100000  ? 'red':'green'}">
-            ₹ {{ emp.package}}
+          <td>
+            <span [ngClass]="emp.package > 100000 ? 'high-salary' : 'low-salary'">
+              ₹ {{ emp.package }}
+            </span>
           </td>
 
-          <td class="text-muted">
-            {{ emp.email || '-' }}
-          </td>
+          <td class="text-muted">{{ emp.email }}</td>
 
-          <td>{{ emp.gender || '-' }}</td>
+          <td>{{ emp.gender }}</td>
 
           <td>{{ emp.address?.city || '-' }}</td>
 
           <td>
-            <span class="badge bg-light text-dark border">
-              {{ emp.workMode || '-' }}
+            <span class="badge mode-badge">
+              {{ emp.workMode }}
             </span>
           </td>
 
-          <!-- Actions -->
+          <!-- ACTIONS -->
           <td class="text-center">
 
-            <button class="btn btn-sm btn-primary me-1" routerLink="/dashbord/editeemploye/{{emp.id}}">
-              Edit
+            <button class="btn btn-sm btn-outline-primary me-1"
+                    routerLink="/dashbord/editeemploye/{{emp.id}}">
+              ✏️
             </button>
 
-            <button class="btn btn-sm btn-danger me-1" (click)="deleteemp(emp.id)">
-              Delete
+            <button class="btn btn-sm btn-outline-danger me-1"
+                    (click)="deleteemp(emp.id)">
+              🗑️
             </button>
 
-            <button class="btn btn-sm btn-outline-dark">
-              View
+            <button class="btn btn-sm btn-outline-light"
+                    routerLink="/dashbord/viewempolye/{{emp.id}}">
+              👁️
             </button>
 
           </td>
@@ -87,9 +97,19 @@
 
   </div>
 
-  <button (click)="pageprev()">Prev</button>
-  <button *ngFor="let emp of[].constructor(10); let i=index "
-   (click)="pageemp(i + 1)">{{i + 1}}</button>
+  <!-- PAGINATION -->
+  <div class="d-flex justify-content-center mt-4 gap-2 flex-wrap">
 
-   <button (click)="nextemp()">Next</button>
+    <button class="btn btn-outline-light" (click)="pageprev()">Prev</button>
+
+    <button *ngFor="let emp of [].constructor(10); let i=index"
+            class="btn btn-page"
+            (click)="pageemp(i + 1)">
+      {{ i + 1 }}
+    </button>
+
+    <button class="btn btn-outline-light" (click)="nextemp()">Next</button>
+
+  </div>
+
 </div>

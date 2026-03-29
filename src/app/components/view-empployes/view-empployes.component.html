@@ -1,1 +1,69 @@
-<p>view-empployes works!</p>
+<div class="container mt-5" *ngIf="displayemp">
+  <div class="card shadow-lg border-0">
+    
+    <!-- Header -->
+    <div class="card-header bg-primary text-white text-center">
+      <h3 class="mb-0">Employee Details</h3>
+    </div>
+
+    <!-- Body -->
+    <div class="card-body">
+
+      <div class="row">
+
+        <!-- Left Side -->
+        <div class="col-md-6">
+          <h5 class="section-title">Personal Info</h5>
+          <p><strong>Name:</strong> {{ displayemp.name }}</p>
+          <p><strong>Email:</strong> {{ displayemp.email }}</p>
+          <p><strong>Gender:</strong> {{ displayemp.gender }}</p>
+          <p><strong>DOB:</strong> {{ displayemp.dob | date }}</p>
+        </div>
+
+        <!-- Right Side -->
+        <div class="col-md-6">
+          <h5 class="section-title">Job Info</h5>
+          <p><strong>Company:</strong> {{ displayemp.company }}</p>
+          <p><strong>Role:</strong> {{ displayemp.role }}</p>
+          <p><strong>Package:</strong> ₹ {{ displayemp.package | number }}</p>
+          <p><strong>Work Mode:</strong> {{ displayemp.workMode }}</p>
+        </div>
+
+      </div>
+
+      <hr>
+
+      <!-- Address Section -->
+      <div>
+        <h5 class="section-title">Address</h5>
+        <p><strong>Address Line:</strong> {{ displayemp.address?.addressLine }}</p>
+        <p><strong>City:</strong> {{ displayemp.address?.city }}</p>
+        <p><strong>State:</strong> {{ displayemp.address?.state }}</p>
+        <p><strong>Pincode:</strong> {{ displayemp.address?.pincode }}</p>
+      </div>
+
+      <hr>
+
+      <!-- Other Details -->
+      <div class="row">
+        <div class="col-md-6">
+          <p><strong>WiFi Bill:</strong> {{ displayemp.wifiBill }}</p>
+          <p><strong>Extra WiFi Bill:</strong> {{ displayemp.wifibill }}</p>
+        </div>
+
+        <div class="col-md-6">
+          <p><strong>ID:</strong> {{ displayemp.id }}</p>
+          <p><strong>Hikes:</strong> {{ displayemp.hikes?.length }}</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="card-footer text-center">
+      <button class="btn btn-outline-primary">Edit</button>
+      <button class="btn btn-outline-danger ms-2">Delete</button>
+    </div>
+
+  </div>
+</div>

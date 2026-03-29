@@ -1,52 +1,81 @@
-<!-- Menu Button -->
-<button class="btn btn-primary m-2"
-        type="button"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#menuCanvas">
-  ☰ Menu
-</button>
+<!-- TOP NAVBAR -->
+<div class="topbar d-flex justify-content-between align-items-center px-3">
 
-<!-- Offcanvas Sidebar -->
-<div class="offcanvas offcanvas-start"
+  <!-- MENU BUTTON (OUTSIDE) -->
+  <button class="btn btn-gradient"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#menuCanvas">
+    ☰
+  </button>
+
+  <h5 class="m-0 text-light">Dashboard</h5>
+
+  <button class="btn btn-danger btn-sm" (click)="logout()">Logout</button>
+
+</div>
+
+
+<!-- OFFCANVAS SIDEBAR -->
+<div class="offcanvas offcanvas-start custom-sidebar"
      tabindex="-1"
      id="menuCanvas">
 
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title">Menu</h5>
+  <!-- HEADER -->
+  <div class="offcanvas-header border-bottom">
+    <h5 class="offcanvas-title text-gradient">JAYAS</h5>
     <button type="button"
-            class="btn-close"
+            class="btn-close btn-close-white"
             data-bs-dismiss="offcanvas">
     </button>
   </div>
 
+  <!-- BODY -->
   <div class="offcanvas-body">
 
-    <ul class="list-group">
+    <ul class="list-group custom-menu">
 
       <li class="list-group-item"
           routerLink="home"
+          routerLinkActive="active-link"
           data-bs-dismiss="offcanvas">
-        Home
+        🏠 Home
       </li>
 
       <li class="list-group-item"
           routerLink="allemployes"
+          routerLinkActive="active-link"
           data-bs-dismiss="offcanvas">
-        All Employees
+        👨‍💼 Employees
       </li>
 
       <li class="list-group-item"
           routerLink="createemploy"
+          routerLinkActive="active-link"
           data-bs-dismiss="offcanvas">
-        Create Employee
+        ➕ Create Employee
       </li>
 
     </ul>
 
   </div>
+
 </div>
 
-<!-- Main Content -->
-<div class="container mt-3">
-  <router-outlet></router-outlet>
+
+<!-- MAIN CONTENT -->
+<div class="main-bg">
+
+  <div class="container-fluid py-4">
+
+    <!-- HERO -->
+    <div class="hero-box mb-4">
+      <h2>Welcome 👋</h2>
+      <p>Manage your employees efficiently</p>
+    </div>
+
+    <router-outlet></router-outlet>
+
+  </div>
+
 </div>

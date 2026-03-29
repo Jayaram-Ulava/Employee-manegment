@@ -1,85 +1,159 @@
-<div>
-    <form action="" [formGroup]="empform">
-        <label for="">Name</label>
-        <input type="text" id="name" name="name" formControlName="name"><br>
-        <label for="city">City</label>
-        <input type="text" id="city" name="city" formControlName="city"><br>
-        <label for="company">Company</label>
-        <input type="text" id="company" name="company" formControlName="company"><br>
-        <label for="">DOB</label>
-        <input type="date" id="dob" name="dob" formControlName="dob"><br>
-        <label for="">Email</label>
-        <input type="email" id="email" name="email" formControlName="email"><br>
-        <label for="">Gender</label>
-        <input type="radio" id="male" name="gender" value="male" formControlName="gender">
-        <label for="male">Male</label>
-        <input type="radio" id="female" name="gender" value="female" formControlName="gender">
-        <label for="female">Female</label><br>
-        <label for="">Package</label>
-        <input type="number" id="package" name="package" formControlName="package"><br>
-        <label for="">Role</label>
-        <input type="text" id="role" name="role" formControlName="role">
+<div class="container mt-5">
+  <div class="card shadow-lg border-0">
+    
+    <!-- Header -->
+    <div class="card-header bg-success text-white text-center">
+      <h3>{{ updateemp ? 'Update Employee' : 'Create Employee' }}</h3>
+    </div>
 
-        <div formGroupName="address">
-            <label for="addressLine">Address Line</label>
-            <input type="text" id="addressLine" name="addressLine" formControlName="addressLine">
-            <label for="state">State</label>
-            <input type="text" id="state" name="state" formControlName="state">
-            <label for="pincode">Pincode</label>
-            <input type="text" id="pincode" name="pincode" formControlName="pincode">
-            <label for="city">City</label>
-            <input type="text" id="city" name="city" formControlName="city">
+    <!-- Form -->
+    <div class="card-body">
+      <form [formGroup]="empform">
+
+        <div class="row">
+
+          <!-- Name -->
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control" formControlName="name">
+          </div>
+
+          <!-- Email -->
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" formControlName="email">
+          </div>
+
+          <!-- DOB -->
+          <div class="col-md-6 mb-3">
+            <label class="form-label">DOB</label>
+            <input type="date" class="form-control" formControlName="dob">
+          </div>
+
+          <!-- Gender -->
+          <div class="col-md-6 mb-3">
+            <label class="form-label d-block">Gender</label>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" value="male" formControlName="gender">
+              <label class="form-check-label">Male</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" value="female" formControlName="gender">
+              <label class="form-check-label">Female</label>
+            </div>
+          </div>
+
+          <!-- Company -->
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Company</label>
+            <input type="text" class="form-control" formControlName="company">
+          </div>
+
+          <!-- Role -->
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Role</label>
+            <input type="text" class="form-control" formControlName="role">
+          </div>
+
+          <!-- Package -->
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Package</label>
+            <input type="number" class="form-control" formControlName="package">
+          </div>
 
         </div>
 
-        <div>
-            <label for="workMode">Work Mode</label>
-            <input type="radio" id="workMode" name="workMode" formControlName="workMode" value="workFromOffice">
-            <label for="remote">Remote</label>
-            <input type="radio" id="workMode" name="workMode" formControlName="workMode" value="remote">
-            <label for="office">Office</label>
+        <hr>
 
-            <div *ngIf="empform.get('workMode')?.value == 'workFromOffice'">
-                <label for="">travel fee</label>
-                <input type="number" id="travelFee" name="travelFee" formControlName="travelFee">
+        <!-- Address -->
+        <h5 class="section-title">Address Details</h5>
+        <div formGroupName="address" class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Address Line</label>
+            <input type="text" class="form-control" formControlName="addressLine">
+          </div>
 
-            </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">State</label>
+            <input type="text" class="form-control" formControlName="state">
+          </div>
 
-            <div *ngIf="empform.get('workMode')?.value == 'remote'">
-                <label for="">WifiBill</label>
-                <input type="number" id="wifiBill" name="wifiBill" formControlName="wifiBill">
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Pincode</label>
+            <input type="text" class="form-control" formControlName="pincode">
+          </div>
 
-            </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">City</label>
+            <input type="text" class="form-control" formControlName="city">
+          </div>
         </div>
 
-        <div>
-            <label for="">Hikes add</label>
-            <button (click)="addHike()">Add Hike</button>
-            <div formArrayName="hikes">
-                <div *ngFor="let hike of hikesarry.controls; let i = index">
-                    <div formGroupName="{{i}}">
-                        <h1>{{i+1}}</h1>
+        <hr>
 
-                        <label for="year">Year</label>
-                        <input type="text" formControlName="year">
-                        <label for="hikePercentage">Hike Percentage</label>
-                        <input type="number" formControlName="hikepercentage">
-                       <button (click)="removeHike(i)">Remove</button>
-                    </div>
-                </div>
+        <!-- Work Mode -->
+        <h5 class="section-title">Work Mode</h5>
+        <div class="mb-3">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" value="workFromOffice" formControlName="workMode">
+            <label class="form-check-label">Office</label>
+          </div>
 
-            </div>
-
-
-
-
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" value="remote" formControlName="workMode">
+            <label class="form-check-label">Remote</label>
+          </div>
         </div>
 
+        <!-- Conditional Fields -->
+        <div *ngIf="empform.get('workMode')?.value == 'workFromOffice'" class="mb-3">
+          <label class="form-label">Travel Fee</label>
+          <input type="number" class="form-control" formControlName="travelFee">
+        </div>
 
+        <div *ngIf="empform.get('workMode')?.value == 'remote'" class="mb-3">
+          <label class="form-label">Wifi Bill</label>
+          <input type="number" class="form-control" formControlName="wifiBill">
+        </div>
 
-        <button (click)="submit()">Submit</button>
-    </form>
+        <hr>
 
+        <!-- Hikes -->
+        <h5 class="section-title">Hikes</h5>
+        <button type="button" class="btn btn-primary mb-3" (click)="addHike()">Add Hike</button>
 
+        <div formArrayName="hikes">
+          <div *ngFor="let hike of hikesarry.controls; let i = index" [formGroupName]="i" class="card p-3 mb-3">
+            
+            <h6>Hike {{ i + 1 }}</h6>
 
+            <div class="row">
+              <div class="col-md-6">
+                <label class="form-label">Year</label>
+                <input type="text" class="form-control" formControlName="year">
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Hike %</label>
+                <input type="number" class="form-control" formControlName="hikepercentage">
+              </div>
+            </div>
+
+            <button type="button" class="btn btn-danger btn-sm mt-2" (click)="removeHike(i)">
+              Remove
+            </button>
+
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <div class="text-center mt-4">
+          <button type="button" class="btn btn-success px-4" (click)="submit()">
+            {{ updateemp ? 'Update' : 'Submit' }}
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
 </div>
