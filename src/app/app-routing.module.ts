@@ -6,9 +6,10 @@ import { AllEmployesComponent } from './components/all-employes/all-employes.com
 import { CreateEmployComponent } from './components/create-employ/create-employ.component';
 import { LoginComponent } from './components/login/login.component';
 import { ViewEmpployesComponent } from './components/view-empployes/view-empployes.component';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
-  {path:'dashbord',component:DashbordComponent, children:[
+  {path:'dashbord',component:DashbordComponent,canActivate:[AuthGuard], children:[
     {path:'home',component:HomeComponent},
     {path:'allemployes',component:AllEmployesComponent},
     {path:'createemploy',component:CreateEmployComponent},

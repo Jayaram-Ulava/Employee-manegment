@@ -16,18 +16,32 @@
           <div class="col-md-6 mb-3">
             <label class="form-label">Name</label>
             <input type="text" class="form-control" formControlName="name">
+            <div *ngIf="empform.get('name')?.touched && empform.get('name')?.invalid">
+              <p class="text-danger" *ngIf="empform.get('name')?.hasError('required')">Name is required</p>
+              <p class="text-danger" *ngIf="empform.get('name')?.hasError('minlength')">Name must be at least 3 characters long</p>
+              <p class="text-danger" *ngIf="empform.get('name')?.hasError('maxlength')">Name must be at most 20 characters long</p>
+            </div>
           </div>
 
           <!-- Email -->
           <div class="col-md-6 mb-3">
             <label class="form-label">Email</label>
             <input type="email" class="form-control" formControlName="email">
+            <div *ngIf="empform.get('email')?.touched && empform.get('email')?.invalid">
+              <p class="text-danger" *ngIf="empform.get('email')?.touched && empform.get('email')?.hasError('required')">Email is required</p>
+              <p class="text-danger" *ngIf="empform.get('email')?.touched && empform.get('email')?.hasError('minlength')">Email must be at least 3 characters long</p>
+              <p class="text-danger" *ngIf="empform.get('email')?.touched && empform.get('email')?.hasError('maxlength')">Email must be at most 20 characters long</p> 
+            </div>
           </div>
 
           <!-- DOB -->
           <div class="col-md-6 mb-3">
             <label class="form-label">DOB</label>
             <input type="date" class="form-control" formControlName="dob">
+            <div *ngIf="empform.get('dob')?.touched && empform.get('dob')?.invalid">
+              <p class="text-danger" *ngIf="empform.get('dob')?.hasError('required')">DOB is required</p>
+            </div>
+            
           </div>
 
           <!-- Gender -->
@@ -41,24 +55,42 @@
               <input class="form-check-input" type="radio" value="female" formControlName="gender">
               <label class="form-check-label">Female</label>
             </div>
+            <div *ngIf="empform.get('gender')?.touched && empform.get('gender')?.invalid">
+              <p class="text-danger" *ngIf="empform.get('gender')?.hasError('required')">Gender is required</p>
+            </div>
           </div>
 
           <!-- Company -->
           <div class="col-md-6 mb-3">
             <label class="form-label">Company</label>
             <input type="text" class="form-control" formControlName="company">
+            <div *ngIf="empform.get('company')?.touched && empform.get('company')?.invalid">
+              <p class="text-danger" *ngIf="empform.get('company')?.hasError('required')">Company is required</p>
+              <p class="text-danger" *ngIf="empform.get('company')?.hasError('minlength')">Company must be at least 6 characters long</p>
+              <p class="text-danger" *ngIf="empform.get('company')?.hasError('maxlength')">Company must be at most 10 characters long</p>
+            </div>
+
           </div>
 
           <!-- Role -->
           <div class="col-md-6 mb-3">
             <label class="form-label">Role</label>
             <input type="text" class="form-control" formControlName="role">
+            <div *ngIf="empform.get('role')?.touched && empform.get('role')?.invalid">
+              <p class="text-danger" *ngIf="empform.get('role')?.hasError('required')">Role is required</p>
+              <p class="text-danger" *ngIf="empform.get('role')?.hasError('minlength')">Role must be at least 5 characters long</p>
+              <p class="text-danger" *ngIf="empform.get('role')?.hasError('maxlength')">Role must be at most 20 characters long</p>
+            </div>
           </div>
 
           <!-- Package -->
           <div class="col-md-6 mb-3">
             <label class="form-label">Package</label>
             <input type="number" class="form-control" formControlName="package">
+            <div *ngIf="empform.get('package')?.touched && empform.get('package')?.invalid">
+              <p class="text-danger" *ngIf="empform.get('package')?.hasError('required')">Package is required</p>
+            </div>
+
           </div>
 
         </div>
@@ -71,21 +103,43 @@
           <div class="col-md-6 mb-3">
             <label class="form-label">Address Line</label>
             <input type="text" class="form-control" formControlName="addressLine">
+            <div *ngIf="empform.get('address')?.get('addressLine')?.touched && empform.get('address')?.get('addressLine')?.invalid">
+              <p class="text-danger" *ngIf="empform.get('address')?.get('addressLine')?.hasError('required')">Address Line is required</p>
+              <p class="text-danger" *ngIf="empform.get('address')?.get('addressLine')?.hasError('minlength')">Address Line must be at least 5 characters long</p>
+              <p class="text-danger" *ngIf="empform.get('address')?.get('addressLine')?.hasError('maxlength')">Address Line must be at most 50 characters long</p>
+            </div>
+
           </div>
 
           <div class="col-md-6 mb-3">
             <label class="form-label">State</label>
             <input type="text" class="form-control" formControlName="state">
+            <div *ngIf="empform.get('address')?.get('state')?.touched && empform.get('address')?.get('state')?.invalid">
+              <p class="text-danger" *ngIf="empform.get('address')?.get('state')?.hasError('required')">State is required</p>
+              <p class="text-danger" *ngIf="empform.get('address')?.get('state')?.hasError('minlength')">State must be at least 3 characters long</p>
+              <p class="text-danger" *ngIf="empform.get('address')?.get('state')?.hasError('maxlength')">State must be at most 10 characters long</p>
+            </div>
           </div>
 
           <div class="col-md-6 mb-3">
             <label class="form-label">Pincode</label>
             <input type="text" class="form-control" formControlName="pincode">
+            <div *ngIf="empform.get('address')?.get('pincode')?.touched && empform.get('address')?.get('pincode')?.invalid">
+              <p class="text-danger" *ngIf="empform.get('address')?.get('pincode')?.hasError('required')">Pincode is required</p>
+              <p class="text-danger" *ngIf="empform.get('address')?.get('pincode')?.hasError('min')">Pincode must be a 6 digit number</p>
+              <p class="text-danger" *ngIf="empform.get('address')?.get('pincode')?.hasError('max')">Pincode must be a 6 digit number</p>
+            </div>
           </div>
 
           <div class="col-md-6 mb-3">
             <label class="form-label">City</label>
             <input type="text" class="form-control" formControlName="city">
+            <div *ngIf="empform.get('address')?.get('city')?.touched && empform.get('address')?.get('city')?.invalid">
+              <p class="text-danger" *ngIf="empform.get('address')?.get('city')?.hasError('required')">City is required</p>
+              <p class="text-danger" *ngIf="empform.get('address')?.get('city')?.hasError('minlength')">City must be at least 3 characters long</p>
+              <p class="text-danger" *ngIf="empform.get('address')?.get('city')?.hasError('maxlength')">City must be at most 10 characters long</p>
+            </div>
+
           </div>
         </div>
 
@@ -109,11 +163,21 @@
         <div *ngIf="empform.get('workMode')?.value == 'workFromOffice'" class="mb-3">
           <label class="form-label">Travel Fee</label>
           <input type="number" class="form-control" formControlName="travelFee">
+          <div *ngIf="empform.get('travelFee')?.touched && empform.get('travelFee')?.invalid">
+            <p class="text-danger" *ngIf="empform.get('travelFee')?.hasError('required')">Travel Fee is required</p>
+            <p class="text-danger" *ngIf="empform.get('travelFee')?.hasError('min')">Travel Fee must be at least 10,000</p>
+            <p class="text-danger" *ngIf="empform.get('travelFee')?.hasError('max')">Travel Fee must be at most 99,999</p>
+          </div>
         </div>
 
         <div *ngIf="empform.get('workMode')?.value == 'remote'" class="mb-3">
           <label class="form-label">Wifi Bill</label>
           <input type="number" class="form-control" formControlName="wifiBill">
+          <div *ngIf="empform.get('wifiBill')?.touched && empform.get('wifiBill')?.invalid">
+            <p class="text-danger" *ngIf="empform.get('wifiBill')?.hasError('required')">Wifi Bill is required</p>
+            <p class="text-danger" *ngIf="empform.get('wifiBill')?.hasError('min')">Wifi Bill must be at least 10,000</p>
+            <p class="text-danger" *ngIf="empform.get('wifiBill')?.hasError('max')">Wifi Bill must be at most 99,999</p>
+          </div>
         </div>
 
         <hr>
@@ -131,11 +195,18 @@
               <div class="col-md-6">
                 <label class="form-label">Year</label>
                 <input type="text" class="form-control" formControlName="year">
+                <div *ngIf="hike.get('year')?.touched && hike.get('year')?.invalid">
+                  <p class="text-danger" *ngIf="hike.get('year')?.hasError('required')">Year is required</p>
+
+                </div>
               </div>
 
               <div class="col-md-6">
                 <label class="form-label">Hike %</label>
                 <input type="number" class="form-control" formControlName="hikepercentage">
+                <div *ngIf="hike.get('hikepercentage')?.touched && hike.get('hikepercentage')?.invalid">
+                  <p class="text-danger" *ngIf="hike.get('hikepercentage')?.hasError('required')">Hike percentage is required</p>
+                </div>
               </div>
             </div>
 
@@ -148,9 +219,12 @@
 
         <!-- Submit -->
         <div class="text-center mt-4">
-          <button type="button" class="btn btn-success px-4" (click)="submit()">
-            {{ updateemp ? 'Update' : 'Submit' }}
-          </button>
+          <button 
+  type="button" 
+  class="btn btn-success px-4" 
+  (click)="submit()">
+  {{ updateemp ? 'Update' : 'Submit' }}
+</button>
         </div>
 
       </form>
