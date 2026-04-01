@@ -1,0 +1,115 @@
+/* Full page dark background */
+.dashboard-container {
+  background: #0f172a;
+  min-height: 100vh;
+  padding: 25px;
+  color: #fff;
+}
+
+/* Header */
+.header h2 {
+  font-weight: 600;
+}
+
+.load-btn {
+  background: #6366f1;
+  color: #fff;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 8px;
+}
+
+.load-btn:hover {
+  background: #4f46e5;
+}
+
+/* Card */
+.account-card {
+  background: #1e293b;
+  border-radius: 16px;
+  padding: 20px;
+  transition: 0.3s;
+  border: 1px solid #2d3a55;
+}
+
+.account-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Top section */
+.top-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+/* Image bigger */
+.profile-img {
+  width: 75px;
+  height: 75px;
+  border-radius: 12px;
+  object-fit: cover;
+  margin-right: 15px;
+  border: 2px solid #6366f1;
+}
+
+/* Info */
+.info h5 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.info span {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+/* Middle section */
+.middle-section {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+}
+
+/* FIXED VISIBILITY ISSUE */
+.detail-box {
+  width: 48%;
+  background: #0f172a;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #2d3a55;
+}
+
+.detail-box label {
+  font-size: 11px;
+  color: #9ca3af;
+  display: block;
+}
+
+.detail-box p {
+  margin: 5px 0 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  word-break: break-all; /* ensures long numbers show */
+}
+
+/* Bottom balance */
+.bottom-section {
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 12px;
+  background: linear-gradient(45deg, #6366f1, #8b5cf6);
+  text-align: center;
+}
+
+.bottom-section span {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.bottom-section h3 {
+  margin: 5px 0 0;
+  font-weight: 700;
+}

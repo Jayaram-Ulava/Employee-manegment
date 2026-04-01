@@ -91,3 +91,6 @@ thead {
 button {
   border-radius: 6px;
 }
+table {
+  width: 100%;
+}

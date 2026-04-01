@@ -7,6 +7,8 @@ import { EmployesService } from 'src/app/services/employes.service';
   styleUrls: ['./all-employes.component.css']
 })
 export class AllEmployesComponent {
+
+  
 totleemployes:any='';
   constructor(private employesService: EmployesService) { }
 

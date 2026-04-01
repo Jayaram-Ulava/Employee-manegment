@@ -1,0 +1,87 @@
+<div class="products-container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h2>🛍️ Product Dashboard</h2>
+
+    <div class="category-buttons">
+
+      <button (click)="filterCategory('all')" 
+              [class.active]="selectedCategory==='all'">All</button>
+
+      <button (click)="filterCategory('beauty')" 
+              [class.active]="selectedCategory==='beauty'">💄 Lipsticks</button>
+
+      <button (click)="filterCategory('furniture')" 
+              [class.active]="selectedCategory==='furniture'">🪑 Furniture</button>
+
+      <button (click)="filterCategory('groceries')" 
+              [class.active]="selectedCategory==='groceries'">🥕 Vegetables</button>
+
+      <button (click)="filterCategory('fragrances')" 
+              [class.active]="selectedCategory==='fragrances'">香水 Parfum</button>
+
+      <button (click)="filterCategory('meat')" 
+              [class.active]="selectedCategory==='meat'">🍗 Meat</button>
+
+    </div>
+  </div>
+
+  <!-- PRODUCT GRID -->
+  <div class="product-grid">
+
+    <div class="product-card" *ngFor="let product of displaypro">
+
+      <!-- IMAGE -->
+      <div class="image-box">
+        <img [src]="product.thumbnail" alt="product">
+      </div>
+
+      <!-- DETAILS -->
+      <div class="content">
+
+        <h3 class="title">{{ product.title }}</h3>
+
+        <p class="brand">🏷️ {{ product.brand }}</p>
+
+        <p class="desc">
+          {{ product.description | slice:0:80 }}...
+        </p>
+
+        <!-- PRICE -->
+        <div class="price-row">
+          <span class="price">₹ {{ product.price }}</span>
+          <span class="discount">
+            {{ product.discountPercentage }}% OFF
+          </span>
+        </div>
+
+        <!-- RATING -->
+        <div class="rating">
+          ⭐ {{ product.rating }}
+        </div>
+
+        <!-- STOCK -->
+        <div class="stock"
+             [ngClass]="product.stock > 50 ? 'in-stock' : 'low-stock'">
+          {{ product.stock > 0 ? 'In Stock' : 'Out of Stock' }}
+        </div>
+
+        <!-- CATEGORY -->
+        <div class="category">
+          {{ product.category }}
+        </div>
+
+        <!-- BUTTONS -->
+        <div class="actions">
+          <button class="btn view">👁️ View</button>
+          <button class="btn buy">🛒 Buy</button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

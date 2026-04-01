@@ -1,0 +1,50 @@
+<div class="dashboard-container">
+
+  <!-- Header -->
+  <div class="header d-flex justify-content-between align-items-center">
+    <h2>My Accounts</h2>
+  </div>
+
+  <!-- Cards -->
+  <div class="row g-4 mt-2">
+    <div class="col-lg-4 col-md-6" *ngFor="let acc of itemp">
+
+      <div class="account-card">
+
+        <!-- Top -->
+        <div class="top-section">
+          <img [src]="acc.profie_picture" class="profile-img">
+
+          <div class="info">
+            <h5>{{ acc.account_name }}</h5>
+            <span>{{ acc.city }}</span>
+          </div>
+        </div>
+
+        <!-- Middle -->
+        <div class="middle-section">
+
+          <div class="detail-box">
+            <label>Account Number</label>
+            <p>{{ acc.account_number }}</p>
+          </div>
+
+          <div class="detail-box">
+            <label>IFSC Code</label>
+            <p>{{ acc.ifsc_code }}</p>
+          </div>
+
+        </div>
+
+        <!-- Bottom -->
+        <div class="bottom-section">
+          <span>Available Balance</span>
+          <h3>₹ {{ acc.available_balance }}</h3>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>

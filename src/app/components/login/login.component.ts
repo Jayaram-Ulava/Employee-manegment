@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -9,9 +10,12 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+   horizontalPosition: MatSnackBarHorizontalPosition = 'start';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+  private _snackBar: any;
 
 
-  constructor(private loginsrv:LoginService, private routerlogin:Router){
+  constructor(private loginsrv:LoginService, private routerlogin:Router, private snackBar: MatSnackBar) {
 
   }
 
@@ -23,11 +27,18 @@ export class LoginComponent {
     console.log(this.loginform.value);
 
    this.loginsrv.getlogin(this.loginform.value).subscribe((resdata:any)=>{
-    alert('login successfull');
-    this.routerlogin.navigateByUrl('dashbord/home');
+this.snackBar.open('Login Successful', 'Close', {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+    }); 
+        this.routerlogin.navigateByUrl('dashbord/home');
     sessionStorage.setItem('logintoken', resdata.loginToken);
    })
+
   
 
 }
+
+   
+
 }

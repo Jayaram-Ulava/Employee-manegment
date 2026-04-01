@@ -7,6 +7,9 @@ import { CreateEmployComponent } from './components/create-employ/create-employ.
 import { LoginComponent } from './components/login/login.component';
 import { ViewEmpployesComponent } from './components/view-empployes/view-empployes.component';
 import { AuthGuard } from './services/auth.guard';
+import { ProductsComponent } from './components/products/products.component';
+import { ItemployesComponent } from './components/itemployes/itemployes.component';
+import { AcountrsComponent } from './components/acountrs/acountrs.component';
 
 const routes: Routes = [
   {path:'dashbord',component:DashbordComponent,canActivate:[AuthGuard], children:[
@@ -14,7 +17,11 @@ const routes: Routes = [
     {path:'allemployes',component:AllEmployesComponent},
     {path:'createemploy',component:CreateEmployComponent},
     {path:'editeemploye/:id',component:CreateEmployComponent},
-    {path:'viewempolye/:id',component:ViewEmpployesComponent}
+    {path:'viewempolye/:id',component:ViewEmpployesComponent},
+    {path:'products',component:ProductsComponent},
+    {path:'itemployes',component:ItemployesComponent},
+    {path:'acountrs',component:AcountrsComponent},
+    {path:'products',loadChildren:()=>import('./lezyloading/products/products.module').then(m=>m.ProductsModule)}
   ]},
   {path:'login',component:LoginComponent},
   {path:'',component:LoginComponent},
